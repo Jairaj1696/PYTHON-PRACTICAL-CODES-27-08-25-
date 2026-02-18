@@ -1,6 +1,6 @@
 # PYTHON-PRACTICAL-CODES-27-08-25-
 All python codes and notes uploaded here.
-# Q1. Roots of a quadratic equation :-
+# Roots of a quadratic equation :-
 ```python
 import cmath   # supports complex roots
 
@@ -25,21 +25,97 @@ Enter c: 6
 Root 1 = (3+0j)
 Root 2 = (2+0j)
 ```
-Q2. Prime Numbers :-
+# Prime Numbers :-
 (a) Check if n is prime
+```python
+n = int(input("Enter number: "))
 
-n = int(input("Enter n: ")) print("Prime" if n > 1 and all(n % i for i in range(2, int(n**0.5)+1)) else "Not Prime")
-
+if n < 2:
+    print("Not Prime")
+else:
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            print("Not Prime")
+            break
+    else:
+        print("Prime")
+```
+INPUT/OUTPUT
+```
+Enter number: 13
+Prime
+```
 (b) Generate all prime numbers till n
+```python
+n = int(input("Generate primes till: "))
 
-n = int(input("Enter n: ")) primes = [x for x in range(2, n+1) if all(x % i for i in range(2, int(x**0.5)+1))] print("Primes till n:", primes)
-
+print("Prime numbers:")
+for num in range(2, n + 1):
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            break
+    else:
+        print(num, end=" ")
+```
+INPUT/OUTPUT
+```
+Generate primes till: 20
+Prime numbers:
+2 3 5 7 11 13 17 19
+```
 (c) Generate first n prime numbers
+```python
+count = int(input("How many primes needed: "))
 
-def isprime(x): return x > 1 and all(x % i for i in range(2, int(x**0.5)+1)) n = int(input("Enter n: ")) primes, num = [], 2 while len(primes) < n: if isprime(num): primes.append(num) num += 1 print("First n primes:", primes)
+num = 2
+found = 0
 
-Q3. Pyramid and Reverse Pyramid :-
-n = int(input("Enter rows: ")) for i in range(1, n+1): print(" "(n-i) + ""(2i-1)) for i in range(n-1, 0, -1): print(" "(n-i) + ""(2i-1))
+while found < count:
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            break
+    else:
+        print(num, end=" ")
+        found += 1
+    num += 1
+```
+INPUT/OUTPUT
+```
+How many primes needed: 5
+2 3 5 7 11
+```
+
+# Pyramid and Reverse Pyramid :-
+```python
+PYRAMID
+n = int(input("Enter number of rows: "))
+
+for i in range(1, n + 1):
+    print(" " * (n - i) + "* " * i)
+```
+INPUT/OUTPUT
+```
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+```
+REVERSE PYRAMID 
+```python
+n = int(input("Enter number of rows: "))
+
+for i in range(n, 0, -1):
+    print(" " * (n - i) + "* " * i)
+```
+INPUT/OUTPUT
+```
+* * * * *
+ * * * *
+  * * *
+   * *
+    *
+```
 
 Q4. Character Operations :-
 ch = input("Enter a character: ")
