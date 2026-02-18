@@ -1,8 +1,9 @@
 # PYTHON-PRACTICAL-CODES-27-08-25-
 All python codes and notes uploaded here.
 Q1. Roots of a quadratic equation :-
+```python
 import cmath a, b, c = map(float, input("Enter a, b, c: ").split()) d = (b**2) - (4ac) root1 = (-b + cmath.sqrt(d)) / (2a) root2 = (-b - cmath.sqrt(d)) / (2a) print("Roots:", root1, root2)
-
+```
 Q2. Prime Numbers :-
 (a) Check if n is prime
 
