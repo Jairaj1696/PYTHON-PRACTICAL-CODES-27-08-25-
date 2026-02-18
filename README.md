@@ -117,24 +117,179 @@ INPUT/OUTPUT
     *
 ```
 
-Q4. Character Operations :-
+# Character Operations :-
+```python
 ch = input("Enter a character: ")
 
-if ch.isalpha(): print("Letter - Uppercase" if ch.isupper() else "Letter - Lowercase") elif ch.isdigit(): names = ["ZERO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE"] print("Digit:", names[int(ch)]) else: print("Special character")
+# check alphabet / digit / special
+if ch.isalpha():
+    print("Alphabet")
+elif ch.isdigit():
+    print("Digit")
+else:
+    print("Special Character")
 
-Q5. String Operations :-
-s = input("Enter string: ") print("Frequency of 'a':", s.count('a')) print("Replace a by x:", s.replace('a', 'x')) print("Remove first 'a':", s.replace('a', '', 1)) print("Remove all 'a':", s.replace('a', ''))
+# uppercase / lowercase
+print("Uppercase:", ch.upper())
+print("Lowercase:", ch.lower())
 
-Q6. Swap first n characters of two strings :-
-s1, s2, n = "hello", "world", 2 print("After swap:", s2[:n] + s1[n:], s1[:n] + s2[n:])
+# ASCII value
+print("ASCII value:", ord(ch))
 
-Q7. Function to return indices of substring :-
-def find_indices(s1, s2): return [i for i in range(len(s1)) if s1.startswith(s2, i)] or -1
+# vowel or consonant
+if ch.lower() in "aeiou":
+    print("Vowel")
+elif ch.isalpha():
+    print("Consonant")
 
-print(find_indices("banana", "na"))
+# next character
+print("Next character:", chr(ord(ch) + 1))
+```
+INPUT/OUTPUT
+```
+Enter a character: a
+Alphabet
+Uppercase: A
+Lowercase: a
+ASCII value: 97
+Vowel
+Next character: b
+```
+#  String Operations :-
+```python
+s = input("Enter a string: ")
 
-Q8. Cubes of Even Integers :-
-lst = [1, 2, 3, 4, 5, 6] print([x**3 for x in lst if isinstance(x, int) and x % 2 == 0])
+# length
+print("Length:", len(s))
+
+# case conversion
+print("Uppercase:", s.upper())
+print("Lowercase:", s.lower())
+
+# reverse
+print("Reverse:", s[::-1])
+
+# palindrome check
+if s == s[::-1]:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+
+# count vowels
+vowels = "aeiouAEIOU"
+count = sum(1 for ch in s if ch in vowels)
+print("Vowel count:", count)
+
+# replace
+print("Replace a with @:", s.replace("a", "@"))
+
+# substring check
+sub = input("Enter substring to search: ")
+print("Found" if sub in s else "Not Found")
+
+# split and join
+words = s.split()
+print("Split:", words)
+print("Join with - :", "-".join(words))
+```
+INPUT/OUPUT
+```
+Enter a string: madam
+Length: 5
+Uppercase: MADAM
+Lowercase: madam
+Reverse: madam
+Palindrome
+Vowel count: 2
+Replace a with @: m@d@m
+Enter substring to search: ad
+Found
+Split: ['madam']
+Join with - : madam
+```
+
+# Swap first n characters of two strings :-
+```python
+s1 = input("Enter first string: ")
+s2 = input("Enter second string: ")
+n = int(input("Enter n: "))
+
+# swap
+new1 = s2[:n] + s1[n:]
+new2 = s1[:n] + s2[n:]
+
+print("After swapping:")
+print("String 1:", new1)
+print("String 2:", new2)
+```
+INPUT/OUTPUT
+```
+Enter first string: hello
+Enter second string: world
+Enter n: 2
+
+After swapping:
+String 1: wollo
+String 2: herld
+```
+
+
+# Function to return indices of substring :-
+(1) Return First Index of Substring
+```python
+
+def first_index(s, sub):
+    return s.find(sub)   # returns -1 if not found
+
+text = input("Enter string: ")
+sub = input("Enter substring: ")
+
+print("First index:", first_index(text, sub))
+```
+INPUT/OUTPUT
+```
+Enter string: banana
+Enter substring: ana
+First index: 1
+```
+(2) Return All Indices of Substring
+```python
+def all_indices(s, sub):
+    indices = []
+    i = s.find(sub)
+    while i != -1:
+        indices.append(i)
+        i = s.find(sub, i + 1)
+    return indices
+
+text = input("Enter string: ")
+sub = input("Enter substring: ")
+
+print("All indices:", all_indices(text, sub))
+```
+INPUT/OUTPUT
+```
+Enter string: banana
+Enter substring: ana
+All indices: [1, 3]
+```
+
+# Cubes of Even Integers :
+```python
+n = int(input("Enter limit: "))
+
+for i in range(2, n + 1, 2):
+    print(i, "->", i**3)
+```
+INPUT/OUTPUT
+```
+Enter limit: 10
+2 -> 8
+4 -> 64
+6 -> 216
+8 -> 512
+10 -> 1000
+```
 
 Q9. File Operations :-
 from collections import Counter
